@@ -1,4 +1,4 @@
-### Go Module Logger
+### Go Module Database
 Database modules, this modules designed to concurrent safe
 
 Faltar Database use :
