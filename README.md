@@ -1,6 +1,8 @@
 ### Go Module Logger
-Logger modules
-Faltar Database use [Logger v7.17.1](github.com/elastic/go-elasticsearch) as logging backend.
+Database modules, this modules designed to concurrent safe
+
+Faltar Database use :
+- [ElasticSearch v7.17.1](github.com/elastic/go-elasticsearch) as Elasticsearch.
 
 ### Installation
 ```sh
