@@ -1,9 +1,12 @@
 package interfaces
 
-import "github.com/elastic/go-elasticsearch/v7"
+import (
+	"github.com/elastic/go-elasticsearch/v7"
+	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
+)
 
 type Database interface {
-	Init(spacename string)
+	Init(logger logger.Logger)
 	LoadElasticSearch(string, ElasticSearchProviderConfig) ElasticSearch
 }
 

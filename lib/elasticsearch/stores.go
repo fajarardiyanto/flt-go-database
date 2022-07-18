@@ -11,6 +11,7 @@ import (
 func (c *ElasticSearch) Create(index string, id string, values interface{}) error {
 	payload, err := json.Marshal(values)
 	if err != nil {
+		c.log.Error(err)
 		return err
 	}
 
@@ -21,6 +22,7 @@ func (c *ElasticSearch) Create(index string, id string, values interface{}) erro
 		Body:       bytes.NewReader(payload),
 	}.Do(ctx, c.elastic)
 	if err != nil {
+		c.log.Error(err)
 		return err
 	}
 	defer res.Body.Close()
@@ -28,9 +30,13 @@ func (c *ElasticSearch) Create(index string, id string, values interface{}) erro
 	if res.IsError() {
 		var e map[string]interface{}
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
+			c.log.Error(err)
 			return err
 		}
-		return fmt.Errorf("[%s] %s: %s", res.Status(), e["error"].(map[string]interface{})["type"], e["error"].(map[string]interface{})["reason"])
+
+		er := fmt.Sprintf("[%s] %s: %s", res.Status(), e["error"].(map[string]interface{})["type"], e["error"].(map[string]interface{})["reason"])
+		c.log.Error(er)
+		return fmt.Errorf(er)
 	}
 
 	return nil

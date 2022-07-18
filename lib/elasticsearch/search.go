@@ -17,29 +17,35 @@ func (c *ElasticSearch) Search(config interfaces.ElasticSearchOptions) (*interfa
 		c.elastic.Search.WithBody(q),
 	)
 	if err != nil {
-		//c.log.Error(err)
+		c.log.Error(err)
 		return nil, err
 	}
 	defer res.Body.Close()
 
 	if res.StatusCode == 404 {
+		c.log.Error(fmt.Errorf("%s", "Index Not Found"))
 		return &result, fmt.Errorf("%s", "Index Not Found")
 	}
 
 	if res.IsError() {
 		var e map[string]interface{}
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
+			c.log.Error(err)
 			return nil, err
 		}
+
+		c.log.Error(err)
 		return nil, err
 	}
 
 	var r *EnvelopeResponse
 	if err := json.NewDecoder(res.Body).Decode(&r); err != nil {
+		c.log.Error(err)
 		return nil, err
 	}
 
 	if len(r.Hits.Hits) < 1 {
+		c.log.Error(err)
 		return nil, fmt.Errorf("%s", "Data Not Found")
 	}
 
@@ -78,6 +84,7 @@ func (c *ElasticSearch) BuildQuery(config interfaces.ElasticSearchOptions) io.Re
 	b.WriteString("\n}")
 
 	//fmt.Printf("%s\n", b.String())
+	c.log.Info(b.String())
 	return strings.NewReader(b.String())
 }
 
