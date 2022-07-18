@@ -1,0 +1,6 @@
+github.com/elastic/go-elasticsearch/v7 v7.17.1 h1:49mHcHx7lpCL8cW1aioEwSEVKQF3s+Igi4Ye/QTWwmk=
+github.com/elastic/go-elasticsearch/v7 v7.17.1/go.mod h1:OJ4wdbtDNk5g503kvlHLyErCgQwwzmDtaFC4XyOxXA4=
+github.com/fajarardiyanto/flt-go-utils v0.0.0-20220718070218-1397d61e606e h1:31YBeAazsQrYTjwq6SFv956CVX+Snioxro2zZJQI8Lo=
+github.com/fajarardiyanto/flt-go-utils v0.0.0-20220718070218-1397d61e606e/go.mod h1:jIpemWuxQdwvj/mdWvZR+ZMSQgFA67uUdHPI/7laKRU=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
