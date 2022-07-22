@@ -3,6 +3,7 @@ package interfaces
 import (
 	"github.com/elastic/go-elasticsearch/v7"
 	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
+	"gorm.io/gorm"
 )
 
 type Database interface {
@@ -17,4 +18,10 @@ type ElasticSearch interface {
 	CreateIndex(name string, mapping string) error
 	Create(index string, id string, values interface{}) error
 	Delete(id string) error
+}
+
+type SQL interface {
+	Orm() *gorm.DB
+	MySQL() error
+	LoadSQL() error
 }
