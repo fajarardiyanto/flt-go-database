@@ -48,7 +48,7 @@ func (c *SQL) Close() {
 		}
 		if _, err := sql.Conn(context.Background()); err != nil {
 			if strings.Contains(err.Error(), "database is closed") {
-				c.log.Debug("Database has been closed to %s@%s:%d",
+				c.log.Debugf("Database has been closed to %s@%s:%d",
 					c.config.Username,
 					c.config.Host, c.config.Port)
 			}
