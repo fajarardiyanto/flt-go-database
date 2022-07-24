@@ -3,6 +3,7 @@ package lib
 import (
 	database "github.com/fajarardiyanto/flt-go-database/interfaces"
 	"github.com/fajarardiyanto/flt-go-database/lib/elasticsearch"
+	"github.com/fajarardiyanto/flt-go-database/lib/sql"
 	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
 	"sync"
 )
@@ -22,4 +23,8 @@ func (m *Modules) Init(lo logger.Logger) {
 
 func (m *Modules) LoadElasticSearch(tag string, config database.ElasticSearchProviderConfig) database.ElasticSearch {
 	return elasticsearch.NewElasticSearch(tag, m.logging, config)
+}
+
+func (m *Modules) LoadSQLDatabase(config database.SQLConfig) database.SQL {
+	return sql.NewSQL(config)
 }

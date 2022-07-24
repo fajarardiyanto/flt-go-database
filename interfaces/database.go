@@ -9,6 +9,7 @@ import (
 type Database interface {
 	Init(logger logger.Logger)
 	LoadElasticSearch(string, ElasticSearchProviderConfig) ElasticSearch
+	LoadSQLDatabase(config SQLConfig) SQL
 }
 
 type ElasticSearch interface {

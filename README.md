@@ -2,7 +2,8 @@
 Database modules, this modules designed to concurrent safe
 
 Faltar Database use :
-- [ElasticSearch v7.17.1](github.com/elastic/go-elasticsearch) as Elasticsearch.
+- [ElasticSearch v7.17.1](https://github.com/elastic/go-elasticsearch) as Elasticsearch.
+- [Gorm v1.23.8](https://gorm.io) as Gorm.
 
 ### Installation
 ```sh
