@@ -1,32 +1,42 @@
 package interfaces
 
 type SQLConfig struct {
-	Enable            bool
-	Driver            string
-	Host              string
-	Port              int
-	Username          string
-	Password          string
-	Database          string
-	Options           string
-	Connection        string
-	AutoReconnect     bool
-	StartInterval     int
-	MaxError          int
-	Sslmode           string
-	TimeoutConnection int
+	Enable            bool   `yaml:"enable"`
+	Driver            string `yaml:"driver"`
+	Host              string `yaml:"host"`
+	Port              int    `yaml:"port"`
+	Username          string `yaml:"username"`
+	Password          string `yaml:"password"`
+	Database          string `yaml:"database"`
+	Options           string `yaml:"options"`
+	Connection        string `yaml:"connection"`
+	AutoReconnect     bool   `yaml:"autoReconnect"`
+	StartInterval     int    `yaml:"startInterval"`
+	MaxError          int    `yaml:"maxError"`
+	Sslmode           string `yaml:"sslmode"`
+	TimeoutConnection int    `yaml:"timeoutConnection"`
 }
 
 type ElasticSearchProviderConfig struct {
-	Enable        bool
-	Host          string
-	Port          int
-	Password      string
-	Username      string
-	IndexName     string
-	MaxError      int
-	AutoReconnect bool
-	StartInterval int
+	Enable        bool   `yaml:"enable"`
+	Host          string `yaml:"host"`
+	Port          int    `yaml:"port"`
+	Password      string `yaml:"password"`
+	Username      string `yaml:"username"`
+	IndexName     string `yaml:"indexName"`
+	MaxError      int    `yaml:"maxError"`
+	AutoReconnect bool   `yaml:"autoReconnect"`
+	StartInterval int    `yaml:"startInterval"`
+}
+
+type RedisProviderConfig struct {
+	Enable        bool   `yaml:"enable"`
+	Host          string `yaml:"host"`
+	Port          int    `yaml:"port"`
+	Password      string `yaml:"password"`
+	AutoReconnect bool   `yaml:"autoReconnect"`
+	StartInterval int    `yaml:"startInterval"`
+	MaxError      int    `yaml:"maxError"`
 }
 
 type ElasticSearchOptions struct {
