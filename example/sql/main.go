@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/fajarardiyanto/flt-go-database/interfaces"
 	"github.com/fajarardiyanto/flt-go-database/lib"
-	log "gitlab.com/fajardiyanto/flt-go-logger/lib"
+	log "github.com/fajarardiyanto/flt-go-logger/lib"
 )
 
 func main() {
-	logger := log.NewLib().Init()
-	logger.SetFormat("text").SetLevel("debug")
+	logger := log.NewLib()
+	logger.Init("Modules SQL")
 
 	db := lib.NewLib()
 	db.Init(logger)
@@ -18,7 +19,7 @@ func main() {
 		Enable:        true,
 		Driver:        "mysql",
 		Host:          "127.0.0.1",
-		Port:          3306,
+		Port:          3334,
 		Username:      "root",
 		Password:      "root",
 		Database:      "mysql",

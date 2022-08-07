@@ -28,7 +28,7 @@ func (c *SQL) OnError(e error) (err error) {
 
 	c.lastTimeout = time.Duration(int(c.lastTimeout.Seconds())*ttm) * time.Second
 	c.log.Error(e)
-	c.log.Warnf("Reconnecting in %s", c.lastTimeout)
+	c.log.Warning("Reconnecting in %s", c.lastTimeout)
 	time.Sleep(c.lastTimeout)
 
 	return c.MySQL()
@@ -48,7 +48,7 @@ func (c *SQL) Close() {
 		}
 		if _, err := sql.Conn(context.Background()); err != nil {
 			if strings.Contains(err.Error(), "database is closed") {
-				c.log.Debugf("Database has been closed to %s@%s:%d",
+				c.log.Debug("Database has been closed to %s@%s:%d",
 					c.config.Username,
 					c.config.Host, c.config.Port)
 			}

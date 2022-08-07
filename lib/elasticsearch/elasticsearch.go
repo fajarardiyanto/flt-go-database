@@ -2,14 +2,15 @@ package elasticsearch
 
 import (
 	"fmt"
-	"github.com/elastic/go-elasticsearch/v7"
-	database "github.com/fajarardiyanto/flt-go-database/interfaces"
-	"github.com/fajarardiyanto/flt-go-utils/hash"
-	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/elastic/go-elasticsearch/v7"
+	database "github.com/fajarardiyanto/flt-go-database/interfaces"
+	logger "github.com/fajarardiyanto/flt-go-logger/interfaces"
+	"github.com/fajarardiyanto/flt-go-utils/hash"
 )
 
 type ElasticSearch struct {
@@ -35,7 +36,7 @@ func NewElasticSearch(tag string, lo logger.Logger, config database.ElasticSearc
 
 	es := ElasticSearch{tag: strings.ToLower(tag), log: lo, config: config, id: id}
 
-	lo.Debugf("ElasticSearch Client %s:%d has been registered", config.Host, config.Port)
+	lo.Debug("ElasticSearch Client %s:%d has been registered", config.Host, config.Port)
 
 	return &es
 }
@@ -63,7 +64,7 @@ func (c *ElasticSearch) OnElasticSearchError(e error) (err error) {
 	c.lastTimeout = time.Duration(int(c.lastTimeout.Seconds())*ttm) * time.Second
 
 	c.log.Error(err)
-	c.log.Warnf("[%s] Reconnecting in %s", c.id, c.lastTimeout)
+	c.log.Warning("[%s] Reconnecting in %s", c.id, c.lastTimeout)
 	time.Sleep(c.lastTimeout)
 
 	return c.ElasticSearch()

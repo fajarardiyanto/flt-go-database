@@ -1,12 +1,13 @@
 package lib
 
 import (
+	"sync"
+
 	database "github.com/fajarardiyanto/flt-go-database/interfaces"
 	"github.com/fajarardiyanto/flt-go-database/lib/elasticsearch"
 	"github.com/fajarardiyanto/flt-go-database/lib/redis"
 	"github.com/fajarardiyanto/flt-go-database/lib/sql"
-	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
-	"sync"
+	logger "github.com/fajarardiyanto/flt-go-logger/interfaces"
 )
 
 type Modules struct {
@@ -27,7 +28,7 @@ func (m *Modules) LoadElasticSearch(tag string, config database.ElasticSearchPro
 }
 
 func (m *Modules) LoadSQLDatabase(config database.SQLConfig) database.SQL {
-	return sql.NewSQL(config)
+	return sql.NewSQL(m.logging, config)
 }
 
 func (m *Modules) LoadRedisDatabase(config database.RedisProviderConfig) database.Redis {

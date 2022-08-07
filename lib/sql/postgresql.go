@@ -16,7 +16,7 @@ func (c *SQL) PostgresSQL() (err error) {
 	}
 
 	address := c.parsingPostgresSQL()
-	c.log.Debugf("Connecting to database postgresSQL server %s@%s:%d", c.config.Username,
+	c.log.Debug("Connecting to database postgresSQL server %s@%s:%d", c.config.Username,
 		c.config.Host, c.config.Port)
 
 	if c.db, err = gorm.Open(postgres.Open(address), &gorm.Config{

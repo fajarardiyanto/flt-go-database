@@ -2,11 +2,11 @@ package sql
 
 import (
 	"fmt"
-	"github.com/fajarardiyanto/flt-go-database/interfaces"
-	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
-	log "gitlab.com/fajardiyanto/flt-go-logger/lib"
-	"gorm.io/gorm"
 	"time"
+
+	"github.com/fajarardiyanto/flt-go-database/interfaces"
+	logger "github.com/fajarardiyanto/flt-go-logger/interfaces"
+	"gorm.io/gorm"
 )
 
 type SQL struct {
@@ -17,13 +17,10 @@ type SQL struct {
 	config      interfaces.SQLConfig
 }
 
-func NewSQL(config interfaces.SQLConfig) interfaces.SQL {
-	lo := log.NewLib().Init()
-	lo.SetFormat("text").SetLevel("debug")
-
+func NewSQL(log logger.Logger, config interfaces.SQLConfig) interfaces.SQL {
 	return &SQL{
 		config: config,
-		log:    lo,
+		log:    log,
 	}
 }
 

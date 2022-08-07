@@ -3,12 +3,12 @@ package main
 import (
 	"github.com/fajarardiyanto/flt-go-database/interfaces"
 	"github.com/fajarardiyanto/flt-go-database/lib"
-	log "gitlab.com/fajardiyanto/flt-go-logger/lib"
+	log "github.com/fajarardiyanto/flt-go-logger/lib"
 )
 
 func main() {
-	logger := log.NewLib().Init()
-	logger.SetFormat("text").SetLevel("debug")
+	logger := log.NewLib()
+	logger.Init("Modules ElasticSearch")
 
 	db := lib.NewLib()
 	db.Init(logger)

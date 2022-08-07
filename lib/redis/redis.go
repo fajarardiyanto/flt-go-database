@@ -3,10 +3,11 @@ package redis
 import (
 	"context"
 	"fmt"
-	"github.com/fajarardiyanto/flt-go-database/interfaces"
-	"github.com/go-redis/redis/v8"
-	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
 	"time"
+
+	"github.com/fajarardiyanto/flt-go-database/interfaces"
+	logger "github.com/fajarardiyanto/flt-go-logger/interfaces"
+	"github.com/go-redis/redis/v8"
 )
 
 type service struct {
@@ -19,7 +20,7 @@ type service struct {
 }
 
 func NewRedis(log logger.Logger, config interfaces.RedisProviderConfig) interfaces.Redis {
-	log.Debugf("ElasticSearch Client %s:%d has been registered", config.Host, config.Port)
+	log.Debug("ElasticSearch Client %s:%d has been registered", config.Host, config.Port)
 	return &service{
 		config: config,
 		log:    log,
@@ -33,7 +34,7 @@ func (s *service) Init() (err error) {
 		return nil
 	}
 
-	s.log.Debugf("Connecting to redis database server %s:%d", s.config.Host, s.config.Port)
+	s.log.Debug("Connecting to redis database server %s:%d", s.config.Host, s.config.Port)
 
 	redisAddress := fmt.Sprintf("%s:%d", s.config.Host, s.config.Port)
 	s.db = redis.NewClient(&redis.Options{
@@ -49,7 +50,7 @@ func (s *service) Init() (err error) {
 		return s.OnInitError(err)
 	}
 
-	s.log.Infof("Success to connect redis %s:%d", s.config.Host, s.config.Port)
+	s.log.Info("Success to connect redis %s:%d", s.config.Host, s.config.Port)
 
 	return nil
 }
@@ -72,7 +73,7 @@ func (s *service) OnInitError(e error) (err error) {
 
 	s.lastTimeout = time.Duration(int(s.lastTimeout.Seconds())*ttm) * time.Second
 	s.log.Error(e)
-	s.log.Warn("Reconnecting in %s", s.lastTimeout)
+	s.log.Warning("Reconnecting in %s", s.lastTimeout)
 	time.Sleep(s.lastTimeout)
 
 	return s.Init()

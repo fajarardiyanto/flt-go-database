@@ -2,11 +2,12 @@ package interfaces
 
 import (
 	"context"
-	"github.com/elastic/go-elasticsearch/v7"
-	"github.com/go-redis/redis/v8"
-	logger "gitlab.com/fajardiyanto/flt-go-logger/interfaces"
-	"gorm.io/gorm"
 	"time"
+
+	"github.com/elastic/go-elasticsearch/v7"
+	logger "github.com/fajarardiyanto/flt-go-logger/interfaces"
+	"github.com/go-redis/redis/v8"
+	"gorm.io/gorm"
 )
 
 type Database interface {

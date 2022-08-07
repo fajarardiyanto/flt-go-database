@@ -21,7 +21,7 @@ func (c *ElasticSearch) Delete(id string) error {
 		}
 
 		er := fmt.Sprintf("[%s] %s: %s", res.Status(), e["error"].(map[string]interface{})["type"], e["error"].(map[string]interface{})["reason"])
-		c.log.Errorf(er)
+		c.log.Error(er)
 		return fmt.Errorf(er)
 	}
 
