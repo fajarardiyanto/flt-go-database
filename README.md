@@ -4,6 +4,7 @@ Database modules, this modules designed to concurrent safe
 Faltar Database use :
 - [ElasticSearch v7.17.1](https://github.com/elastic/go-elasticsearch) as Elasticsearch.
 - [Gorm v1.23.8](https://gorm.io) as Gorm.
+- [Go Redis v8.11.5](https://github.com/go-redis/redis)
 
 ### Installation
 ```sh
@@ -17,7 +18,7 @@ go get -u github.com/fajarardiyanto/flt-go-database
 
 ###### Upgrade or downgrade with tag version if available
 ```sh
-go get -u github.com/fajarardiyanto/flt-go-database@v1.0.0
+go get -u github.com/fajarardiyanto/flt-go-database@v0.0.5
 ```
 
 ### Usage
