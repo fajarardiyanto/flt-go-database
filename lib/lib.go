@@ -1,6 +1,7 @@
 package lib
 
 import (
+	"github.com/fajarardiyanto/flt-go-database/lib/mongo"
 	"sync"
 
 	database "github.com/fajarardiyanto/flt-go-database/interfaces"
@@ -33,4 +34,8 @@ func (m *Modules) LoadSQLDatabase(config database.SQLConfig) database.SQL {
 
 func (m *Modules) LoadRedisDatabase(config database.RedisProviderConfig) database.Redis {
 	return redis.NewRedis(m.logging, config)
+}
+
+func (m *Modules) LoadMongoDatabase(config database.MongoProviderConfig) database.Mongo {
+	return mongo.NewMongo(m.logging, config)
 }
