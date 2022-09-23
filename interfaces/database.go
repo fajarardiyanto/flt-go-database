@@ -2,6 +2,9 @@ package interfaces
 
 import (
 	"context"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
 
 	"github.com/elastic/go-elasticsearch/v7"
@@ -15,6 +18,7 @@ type Database interface {
 	LoadElasticSearch(string, ElasticSearchProviderConfig) ElasticSearch
 	LoadSQLDatabase(config SQLConfig) SQL
 	LoadRedisDatabase(config RedisProviderConfig) Redis
+	LoadMongoDatabase(config MongoProviderConfig) Mongo
 }
 
 type ElasticSearch interface {
@@ -37,4 +41,10 @@ type SQL interface {
 	Orm() *gorm.DB
 	MySQL() error
 	LoadSQL() error
+}
+
+type Mongo interface {
+	Init() error
+	SetDatabase(db string) *mongo.Database
+	LoadPostChannel(ctx context.Context, db, table string, filter bson.M, res chan<- []bson.M, opt ...*options.FindOptions)
 }
