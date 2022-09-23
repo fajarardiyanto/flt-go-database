@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/elastic/go-elasticsearch/v7 v7.17.1
-	github.com/fajarardiyanto/flt-go-logger v0.0.5
-	github.com/fajarardiyanto/flt-go-utils v0.0.0-20220718070218-1397d61e606e
+	github.com/fajarardiyanto/flt-go-logger v0.0.8
+	github.com/fajarardiyanto/flt-go-utils v0.0.7
 	github.com/go-redis/redis/v8 v8.11.5
 	gorm.io/driver/mysql v1.3.5
 	gorm.io/driver/postgres v1.3.8
