@@ -39,6 +39,18 @@ type RedisProviderConfig struct {
 	MaxError      int    `yaml:"maxError"`
 }
 
+type MongoProviderConfig struct {
+	Enable            bool   `yaml:"enable"`
+	Host              string `yaml:"host"`
+	Port              int    `yaml:"port"`
+	Username          string `yaml:"username"`
+	Password          string `yaml:"password"`
+	AutoReconnect     bool   `yaml:"autoReconnect"`
+	MaxError          int    `yaml:"maxError"`
+	StartInterval     int    `yaml:"startInterval"`
+	TimeoutConnection int    `yaml:"timeoutConnection"`
+}
+
 type ElasticSearchOptions struct {
 	Size  int
 	Query string
