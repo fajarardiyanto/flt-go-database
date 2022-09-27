@@ -17,8 +17,8 @@ github.com/elastic/go-elasticsearch/v7 v7.17.1 h1:49mHcHx7lpCL8cW1aioEwSEVKQF3s+
 github.com/elastic/go-elasticsearch/v7 v7.17.1/go.mod h1:OJ4wdbtDNk5g503kvlHLyErCgQwwzmDtaFC4XyOxXA4=
 github.com/fajarardiyanto/flt-go-logger v0.0.8 h1:ABwTGR3fmHO5G/9t9537jQgg10NVfv8ar2ixTpjFqTE=
 github.com/fajarardiyanto/flt-go-logger v0.0.8/go.mod h1:xOgW2kXZI/AwMYCPP7ojUmWCpMGHuiwiBoBa3VLa/f0=
-github.com/fajarardiyanto/flt-go-utils v0.0.7 h1:GUXzhwax6ao0WrHsJ9j5rRSJ+mdnvO5rEpJt0v1TcLA=
-github.com/fajarardiyanto/flt-go-utils v0.0.7/go.mod h1:P0zJkTQJsuW/w77Qznl5Z7VCDzQjQgYAWDdxCYl3awE=
+github.com/fajarardiyanto/flt-go-utils v0.0.9 h1:3vGt1Rqm+11WjOK47WB/CxGZg6rfq49vXjabplw0O8g=
+github.com/fajarardiyanto/flt-go-utils v0.0.9/go.mod h1:JA4xNbT0L6DeidHzD+Mgif5gIdSbOb4WGOOJYe4Upfc=
 github.com/fsnotify/fsnotify v1.4.9 h1:hsms1Qyu0jgnwNXIxa+/V/PDsU6CfLf6CNO8H7IWoS4=
 github.com/go-kit/log v0.1.0/go.mod h1:zbhenjAZHb184qTLMA9ZjW7ThYL0H2mk7Q6pNt4vbaY=
 github.com/go-logfmt/logfmt v0.5.0/go.mod h1:wCYkCAKZfumFQihp8CzCvQ3paCTfi41vtzG1KdI/P7A=

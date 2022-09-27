@@ -2,6 +2,7 @@ package lib
 
 import (
 	"github.com/fajarardiyanto/flt-go-database/lib/mongo"
+	"github.com/fajarardiyanto/flt-go-utils/flags"
 	"sync"
 
 	database "github.com/fajarardiyanto/flt-go-database/interfaces"
@@ -29,6 +30,7 @@ func (m *Modules) LoadElasticSearch(tag string, config database.ElasticSearchPro
 }
 
 func (m *Modules) LoadSQLDatabase(config database.SQLConfig) database.SQL {
+	flags.ParseStruct(config)
 	return sql.NewSQL(m.logging, config)
 }
 
