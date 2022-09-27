@@ -29,8 +29,8 @@ func (m *Modules) LoadElasticSearch(tag string, config database.ElasticSearchPro
 	return elasticsearch.NewElasticSearch(tag, m.logging, config)
 }
 
-func (m *Modules) LoadSQLDatabase(config *database.SQLConfig) database.SQL {
-	flags.ParseStruct(config)
+func (m *Modules) LoadSQLDatabase(path string, config *database.SQLConfig) database.SQL {
+	flags.Init(path, config)
 	return sql.NewSQL(m.logging, config)
 }
 
