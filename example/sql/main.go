@@ -15,17 +15,8 @@ func main() {
 	db := lib.NewLib()
 	db.Init(logger)
 
-	mysql := db.LoadSQLDatabase(interfaces.SQLConfig{
-		Enable:        true,
-		Driver:        "mysql",
-		Host:          "127.0.0.1",
-		Port:          3334,
-		Username:      "root",
-		Password:      "root",
-		Database:      "mysql",
-		AutoReconnect: true,
-		StartInterval: 2,
-	})
+	cfg := new(interfaces.SQLConfig)
+	mysql := db.LoadSQLDatabase(cfg)
 	if err := mysql.LoadSQL(); err != nil {
 		fmt.Println(err)
 		return
