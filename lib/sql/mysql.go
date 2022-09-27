@@ -45,7 +45,7 @@ func (c *SQL) MySQL() (err error) {
 	return nil
 }
 
-func parsingMysqlURL(config interfaces.SQLConfig) (connect string) {
+func parsingMysqlURL(config *interfaces.SQLConfig) (connect string) {
 	connect = config.Connection
 	if len(connect) == 0 {
 		connect = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",

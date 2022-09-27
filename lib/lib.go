@@ -29,7 +29,7 @@ func (m *Modules) LoadElasticSearch(tag string, config database.ElasticSearchPro
 	return elasticsearch.NewElasticSearch(tag, m.logging, config)
 }
 
-func (m *Modules) LoadSQLDatabase(config database.SQLConfig) database.SQL {
+func (m *Modules) LoadSQLDatabase(config *database.SQLConfig) database.SQL {
 	flags.ParseStruct(config)
 	return sql.NewSQL(m.logging, config)
 }

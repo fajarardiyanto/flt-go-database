@@ -14,10 +14,10 @@ type SQL struct {
 	db          *gorm.DB
 	log         logger.Logger
 	lastTimeout time.Duration
-	config      interfaces.SQLConfig
+	config      *interfaces.SQLConfig
 }
 
-func NewSQL(log logger.Logger, config interfaces.SQLConfig) interfaces.SQL {
+func NewSQL(log logger.Logger, config *interfaces.SQLConfig) interfaces.SQL {
 	return &SQL{
 		config: config,
 		log:    log,
