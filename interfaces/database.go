@@ -16,7 +16,7 @@ import (
 type Database interface {
 	Init(logger logger.Logger)
 	LoadElasticSearch(string, ElasticSearchProviderConfig) ElasticSearch
-	LoadSQLDatabase(config *SQLConfig) SQL
+	LoadSQLDatabase(path string, config *SQLConfig) SQL
 	LoadRedisDatabase(config RedisProviderConfig) Redis
 	LoadMongoDatabase(config MongoProviderConfig) Mongo
 }
