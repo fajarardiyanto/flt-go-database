@@ -15,8 +15,7 @@ func main() {
 	db := lib.NewLib()
 	db.Init(logger)
 
-	cfg := new(interfaces.SQLConfig)
-	mysql := db.LoadSQLDatabase(cfg)
+	mysql := db.LoadSQLDatabase(interfaces.SQLConfig{})
 	if err := mysql.LoadSQL(); err != nil {
 		fmt.Println(err)
 		return
