@@ -42,6 +42,21 @@ func (c *SQL) MySQL() (err error) {
 		return c.OnError(fmt.Errorf("%s", err.Error()))
 	}
 
+	if !c.config.CustomPool {
+		c.config.LifeTime = 5
+		c.config.MaxIdle = 7
+		c.config.MaxConn = 10
+	}
+
+	dbConn, err := c.db.DB()
+	if err != nil {
+		return c.OnError(fmt.Errorf("%s", err.Error()))
+	}
+
+	dbConn.SetMaxIdleConns(c.config.MaxIdle)
+	dbConn.SetConnMaxLifetime(time.Minute * time.Duration(c.config.LifeTime))
+	dbConn.SetMaxOpenConns(c.config.MaxConn)
+
 	return nil
 }
 

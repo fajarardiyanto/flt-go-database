@@ -15,6 +15,10 @@ type SQLConfig struct {
 	MaxError          int    `yaml:"maxError" default:"5"`
 	Sslmode           string `yaml:"sslmode" default:"false"`
 	TimeoutConnection int    `yaml:"timeoutConnection" default:"3000"`
+	CustomPool        bool   `yaml:"customPool" default:"5"`
+	MaxConn           int    `yaml:"maxConn" default:"5"`
+	MaxIdle           int    `yaml:"maxIdle" default:"5"`
+	LifeTime          int    `yaml:"lifeTime" default:"5"`
 }
 
 type ElasticSearchProviderConfig struct {
