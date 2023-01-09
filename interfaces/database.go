@@ -48,3 +48,18 @@ type Mongo interface {
 	SetDatabase(db string) *mongo.Database
 	LoadPostChannel(ctx context.Context, db, table string, filter bson.M, res chan<- []bson.M, opt ...*options.FindOptions)
 }
+
+type Kafka interface {
+	Consumer(KafkaOptions, ConsumerCallback)
+	Producer(ProducerIsReady)
+	Push(ctx context.Context, id string, options KafkaOptions, body interface{}, cb ConsumerCallback) error
+}
+
+type ConsumerCallbackIsDone struct {
+	Done       context.CancelFunc
+	EndRequest func()
+}
+
+type ConsumerCallback func(Messages, ConsumerCallbackIsDone)
+
+type ProducerIsReady func()
