@@ -63,7 +63,7 @@ func (c *SQL) MySQL() (err error) {
 func parsingMysqlURL(config interfaces.SQLConfig) (connect string) {
 	connect = config.Connection
 	if len(connect) == 0 {
-		connect = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+		connect = fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true",
 			config.Username,
 			config.Password,
 			config.Host, config.Port,
