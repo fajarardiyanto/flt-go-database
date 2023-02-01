@@ -58,14 +58,34 @@ type MongoProviderConfig struct {
 }
 
 type KafkaProviderConfig struct {
-	Enable           bool   `yaml:"enable" default:"false" desc:"config:kafka:enable"`
-	Host             string `yaml:"host" default:"127.0.0.1:9092" desc:"config:kafka:host"`
-	Registry         string `yaml:"registry" default:"" desc:"config:kafka:registry"`
-	Username         string `yaml:"username" default:""  desc:"config:kafka:username"`
-	Password         string `yaml:"password" default:"" desc:"config:kafka:password"`
-	SecurityProtocol string `yaml:"securityProtocol" default:"SASL_SSL"  desc:"config:kafka:securityProtocol"`
-	Mechanisms       string `yaml:"mechanisms" default:"PLAIN"  desc:"config:kafka:mechanisms"`
-	Debug            string `yaml:"debug" default:"consumer"  desc:"config:kafka:debug"`
+	Enable           bool   `yaml:"enable" default:"false"`
+	Host             string `yaml:"host" default:"127.0.0.1:9092"`
+	Registry         string `yaml:"registry" default:""`
+	Username         string `yaml:"username" default:""`
+	Password         string `yaml:"password" default:""`
+	SecurityProtocol string `yaml:"securityProtocol" default:"SASL_SSL"`
+	Mechanisms       string `yaml:"mechanisms" default:"PLAIN"`
+	Debug            string `yaml:"debug" default:"consumer"`
+}
+
+type RabbitMQProviderConfig struct {
+	Enable              bool   `yaml:"enable" default:"false"`
+	Host                string `yaml:"host" default:"127.0.0.1"`
+	Port                int    `yaml:"port" default:"5672"`
+	Username            string `yaml:"username" default:"guest"`
+	Password            string `yaml:"password" default:"guest"`
+	ReconnectDuration   int    `yaml:"reconnectDuration" default:"5"`
+	DedicatedConnection bool   `yaml:"dedicatedConnection" default:"false"`
+}
+
+type RabbitMQOptions struct {
+	Exchange     string
+	ExchangeType string
+	RoutingKey   string
+	Durable      bool
+	AutoDeleted  bool
+	NoWait       bool
+	Encoding     Encoding
 }
 
 type KafkaOptions struct {
@@ -107,4 +127,8 @@ type Messages interface {
 	Decode(interface{}) error
 	SetContext(context.Context)
 	Context() context.Context
+}
+
+type EmbeddedOptions struct {
+	Directory string
 }

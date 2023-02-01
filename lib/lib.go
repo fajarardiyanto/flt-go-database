@@ -2,6 +2,7 @@ package lib
 
 import (
 	"github.com/fajarardiyanto/flt-go-database/lib/mongo"
+	"github.com/fajarardiyanto/flt-go-database/lib/rabbitmq"
 	"sync"
 
 	database "github.com/fajarardiyanto/flt-go-database/interfaces"
@@ -38,4 +39,8 @@ func (m *Modules) LoadRedisDatabase(config database.RedisProviderConfig) databas
 
 func (m *Modules) LoadMongoDatabase(config database.MongoProviderConfig) database.Mongo {
 	return mongo.NewMongo(m.logging, config)
+}
+
+func (c *Modules) LoadRabbitMQ(tag string, config database.RabbitMQProviderConfig) database.RabbitMQ {
+	return rabbitmq.NewRabbitMQ(tag, c.logging, config)
 }

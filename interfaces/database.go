@@ -19,6 +19,7 @@ type Database interface {
 	LoadSQLDatabase(config SQLConfig) SQL
 	LoadRedisDatabase(config RedisProviderConfig) Redis
 	LoadMongoDatabase(config MongoProviderConfig) Mongo
+	LoadRabbitMQ(tag string, config RabbitMQProviderConfig) RabbitMQ
 }
 
 type ElasticSearch interface {
@@ -53,6 +54,15 @@ type Kafka interface {
 	Consumer(KafkaOptions, ConsumerCallback)
 	Producer(ProducerIsReady)
 	Push(ctx context.Context, id string, options KafkaOptions, body interface{}, cb ConsumerCallback) error
+}
+
+type RabbitMQ interface {
+	Consumer(RabbitMQOptions, ConsumerCallback)
+	Producer(RabbitMQOptions)
+	Push(ctx context.Context,
+		id, key string,
+		body interface{},
+		cb ConsumerCallback) error
 }
 
 type ConsumerCallbackIsDone struct {
